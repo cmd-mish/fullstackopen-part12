@@ -17,3 +17,7 @@ The application has /todos crud which requires a MongoDB. Pass connection url wi
 # Redis
 
 Pass connection url with env `REDIS_URL`
+
+# Docker build
+
+Containerize the application by running `docker build -t exercise12.5 .` Run the container on http://localhost:3000 by running `docker run -p 3000:3000 exercise12.5`
