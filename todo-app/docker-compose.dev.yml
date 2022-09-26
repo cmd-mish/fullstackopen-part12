@@ -1,6 +1,6 @@
 services:
   app:
-    image: todo-frontend
+    image: todo-frontend-dev
     build: 
       context: ./todo-frontend
       dockerfile: dev.Dockerfile
@@ -8,7 +8,17 @@ services:
       - ./todo-frontend:/usr/src/app
     ports:
       - 3000:3000
-    container_name: todo-frontend
+    container_name: todo-frontend-dev
+  server:
+    image: todo-backend-dev
+    build: 
+      context: ./todo-backend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./todo-backend:/usr/src/app
+    ports: 
+      - 3001:3000
+    container_name: todo-backend-dev
   nginx:
     image: nginx:1.20.1
     build: ./todo-frontend
@@ -18,3 +28,4 @@ services:
       - 8080:80
     depends_on:
       - app
+      - server
