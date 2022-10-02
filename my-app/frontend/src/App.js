@@ -6,7 +6,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/')
+      .get(process.env.REACT_APP_BACKEND)
       .then(res => {
         setNODE_ENV(res.data.NODE_ENV)
       })
