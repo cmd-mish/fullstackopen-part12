@@ -5,8 +5,13 @@ const App = () => {
   const [NODE_ENV, setNODE_ENV] = useState(undefined)
 
   useEffect(() => {
+    const backendURL =
+      (process.env.REACT_APP_MODE === 'dev')
+        ? process.env.REACT_APP_BACKEND
+        : process.env.REACT_APP_BACKEND_PROD
+
     axios
-      .get(process.env.REACT_APP_BACKEND)
+      .get(backendURL)
       .then(res => {
         setNODE_ENV(res.data.NODE_ENV)
       })
